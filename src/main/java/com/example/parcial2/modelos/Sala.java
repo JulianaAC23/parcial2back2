@@ -1,5 +1,6 @@
 package com.example.parcial2.modelos;
 
+import com.example.parcial2.ayudas.Tipos;
 import jakarta.persistence.*;
 
 @Entity
@@ -17,7 +18,7 @@ public class Sala {
     private Integer capacidad;
 
     @Column(name = "tipo", nullable = false, length = 20)
-    private String tipo; // 2D, 3D, IMAX...
+    private Tipos tipo;
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "cine_id", nullable = false)
@@ -26,7 +27,7 @@ public class Sala {
     public Sala() {
     }
 
-    public Sala(Long id, String nombre, Integer capacidad, String tipo, Cine cine) {
+    public Sala(Long id, String nombre, Integer capacidad, Tipos tipo, Cine cine) {
         this.id = id;
         this.nombre = nombre;
         this.capacidad = capacidad;
@@ -58,11 +59,11 @@ public class Sala {
         this.capacidad = capacidad;
     }
 
-    public String getTipo() {
+    public Tipos getTipo() {
         return tipo;
     }
 
-    public void setTipo(String tipo) {
+    public void setTipo(Tipos tipo) {
         this.tipo = tipo;
     }
 
